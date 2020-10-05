@@ -10,26 +10,26 @@ using System.Threading.Tasks;
 namespace Onion.DataAccess
 {
 
-    public class GenericEFRepository<TEntidad> : IGenericRepository<TEntidad> where TEntidad : class
+    public class GenericEFRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        #region Propiedades
+        #region Properties
 
-        protected DbContext contexto { get; set; }
+        protected DbContext context { get; set; }
 
-        protected DbContext Contexto
+        protected DbContext Context
         {
-            get { return this.contexto; }
+            get { return this.context; }
         }
 
         #endregion
 
-        public GenericEFRepository(DbContext contexto)
+        public GenericEFRepository(DbContext context)
         {
-            this.contexto = contexto;
+            this.context = context;
         }
 
 
-        #region Métodos Públicos
+        #region  Public Methods
 
         public void Dispose()
         {
@@ -41,66 +41,66 @@ namespace Onion.DataAccess
         {
             if (disposing)
             {
-                if (this.contexto != null)
+                if (this.context != null)
                 {
-                    this.contexto.Dispose();
-                    this.contexto = null;
+                    this.context.Dispose();
+                    this.context = null;
                 }
             }
         }
 
-        public List<TEntidad> SelectAll()
+        public List<TEntity> SelectAll()
         {
-            return this.entidad.ToList();
+            return this.entity.ToList();
         }
 
-        public TEntidad Single(Expression<Func<TEntidad, bool>> expresion)
+        public TEntity Single(Expression<Func<TEntity, bool>> expression)
         {            
-            return this.entidad.SingleOrDefault(expresion);
+            return this.entity.SingleOrDefault(expression);
         }
 
-        public List<TEntidad> Select(Expression<Func<TEntidad, bool>> expresion)
+        public List<TEntity> Select(Expression<Func<TEntity, bool>> expression)
         {
-            return this.entidad.Where(expresion).ToList();
+            return this.entity.Where(expression).ToList();
         }
 
-        public void Create(TEntidad entity)
+        public void Create(TEntity entity)
         {
-            this.entidad.Add(entity);
-            this.contexto.SaveChanges();
+            this.entity.Add(entity);
+            this.context.SaveChanges();
         }
 
-        public void Create(List<TEntidad> lista)
+        public void Create(List<TEntity> list)
         {
-            foreach (TEntidad entidad in lista)
+            foreach (TEntity entity in list)
             {
-                this.Create(entidad);
+                this.Create(entity);
             }
-            this.contexto.SaveChanges();
+            this.context.SaveChanges();
         }
 
-        public void Update(TEntidad source)
+        public void Update(TEntity source)
         {
-            ((DbContext)this.contexto).Entry(source).State = EntityState.Modified;
+            ((DbContext)this.context).Entry(source).State = EntityState.Modified;
         }
 
-        public void Delete(Expression<Func<TEntidad, bool>> expresion)
+        public void Delete(Expression<Func<TEntity, bool>> expression)
         {
-            List<TEntidad> lista = this.Select(expresion);
-            foreach (TEntidad entidad in lista)
+            List<TEntity> list = this.Select(expression);
+            foreach (TEntity entity in list)
             {
-                this.entidad.Remove(entidad);
+                this.entity.Remove(entity);
             }
-            this.contexto.SaveChanges();
+            this.context.SaveChanges();
         }
 
         #endregion
 
-        #region Métodos Privados
+        #region  Private Methods
 
-        private DbSet<TEntidad> entidad
+        private DbSet<TEntity> entity
         {
-            get { return this.contexto.Set<TEntidad>(); }
+            get { return this.context.Set<TEntity>(); }
         }
 
         #endregion

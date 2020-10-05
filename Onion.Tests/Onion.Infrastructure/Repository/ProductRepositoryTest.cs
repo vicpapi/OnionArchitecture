@@ -1,14 +1,9 @@
 using Moq;
 using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 using FizzWare.NBuilder;
 using Onion.Core.Interfaces.Repository;
 using Onion.Core.Models;
-using Onion.Infrastructure.Repository;
-using Onion.Core.BusinessRules;
-using Onion.Core.Interfaces.BusinessRules;
-using Onion.DataAccess;
 using System.Linq.Expressions;
 using System;
 
