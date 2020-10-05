@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -24,6 +24,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Onion.Core\Onion.Core.csproj" />
     <ProjectReference Include="..\Onion.Infrastructure\Onion.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Onion.DataAccess\" />
+    <Folder Include="Onion.Core\" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Onion.Infrastructure.Repository;
 using Onion.DataAccess;
 using Onion.Core.Interfaces.Repository;
+using Onion.Infrastructure.ApplicationLog;
 
 namespace Onion
 {
@@ -31,13 +28,12 @@ namespace Onion
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IProductRepository, ProductRepository>()
-            ;
+            services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();
-
-            services.AddScoped<ILog4NetRepository, LogNetRepository>(service =>
+            
+            services.AddScoped<ILoggingRepository, Log4NetRepository>(service =>
             {
-                return new LogNetRepository(Configuration["Log4Net:path"],
+                return new Log4NetRepository(Configuration["Log4Net:path"],
                                           Configuration["Log4Net:elementName"]);
             });
         }

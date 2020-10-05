@@ -7,11 +7,9 @@ using System.Text;
 
 namespace Onion.Core.BusinessRules
 {
-    public class TexasSalesTaxCalculator //: ISalesTaxCalculator
-    {
-        private const decimal _salesTaxPercentage = .08M;
-
-        public decimal GetTaxes(int id, IRepository<ProductDetails> productDetailRepository)
+    public class TexasSalesTaxCalculator : ISalesTaxCalculator
+    {       
+        public decimal GetTaxes(int id, decimal salesTaxPercentage, IRepository<ProductDetails> productDetailRepository)
         {
             decimal taxCalculate = 0;
 
@@ -19,7 +17,7 @@ namespace Onion.Core.BusinessRules
 
             if (productDetails != null)
             {
-                taxCalculate = productDetails.Price * _salesTaxPercentage;
+                taxCalculate = productDetails.Price * salesTaxPercentage;
             }
 
             return taxCalculate;

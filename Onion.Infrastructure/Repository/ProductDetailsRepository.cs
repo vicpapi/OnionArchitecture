@@ -20,21 +20,5 @@ namespace Onion.Infrastructure.Repository
         {
             return productDetailsRepository.Single(s=> s.ProductId == id);
         }
-
-        public decimal GetTaxes(int id)
-        {
-            decimal tax = 0.06m;
-            decimal taxCalculate = 0;
-
-            var productDetail = productDetailsRepository.Single(s => s.ProductId == id);
-
-            if (productDetail != null)
-            {
-                taxCalculate = (tax * productDetail.Price) + productDetail.Price;
-            }
-
-            return taxCalculate;
-
-        }
     }
 }

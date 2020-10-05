@@ -14,9 +14,9 @@ namespace Onion.Controllers
     {
         private readonly IProductRepository productRepository;
         private readonly IProductDetailsRepository productDetailsRepository;
-        private readonly ILog4NetRepository _loggerRepository;
+        private readonly ILoggingRepository _loggerRepository;
 
-        public ProductController(IProductRepository productRepository, ILog4NetRepository loggerRepository)
+        public ProductController(IProductRepository productRepository, ILoggingRepository loggerRepository)
         {
             this.productRepository = productRepository; 
             _loggerRepository = loggerRepository;
@@ -26,19 +26,24 @@ namespace Onion.Controllers
         public List<ProductDetails> Get()
         {
             _loggerRepository.LogInfo("Test Get");
-            List<ProductDetails> productDetails = new List<ProductDetails>();
-            var prodcutList = productRepository.GetProduct().ToList();
-            foreach (var product in prodcutList)
+
+            var productDetails = new List<ProductDetails>();
+            var productList = productRepository.SelectAll();
+
+            foreach (var product in productList)
             {
                 var productDetailList = productDetailsRepository.GetProductDetail(product.ProductId);
+
                 ProductDetails details = new ProductDetails
                 {
                     ProductId = product.ProductId,
                     Price = productDetailList.Price,
                     StockAvailable = productDetailList.StockAvailable,
                 };
+
                 productDetails.Add(details);
             }
+
             return productDetails;
         }
 

@@ -1,15 +1,14 @@
-﻿using Altair.Infrastructure.Logger.Interfaces;
-using log4net;
+﻿using log4net;
 using log4net.Config;
+using Onion.Core.Interfaces.Repository;
 using System;
-using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace Altair.Infrastructure.Logger.Repository
+namespace Onion.Infrastructure.ApplicationLog
 {
-    public class Log4NetRepository : ILog4NetRepository
+    public class Log4NetRepository : ILoggingRepository
     {
         private readonly ILog _logger = LogManager.GetLogger(typeof(Log4NetRepository));
 

@@ -8,10 +8,6 @@ namespace Onion.Core.Interfaces.Repository
 {
     public interface IProductRepository : IRepository<Product>
     {
-        Product GetProduct(); 
-
-        
-
-
+        Product GetProduct();        
     }
 }

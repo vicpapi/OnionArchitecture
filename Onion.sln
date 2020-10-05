@@ -13,11 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Infrastructure", "Oni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Core", "Onion.Core\Onion.Core.csproj", "{30D1DF24-5ABC-4715-9084-5901278B701C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{91D18F68-1D24-47A0-849F-4E97A792F111}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altair.Infrastructure.Logger", "Altari.Infrastructure.Logger\Altair.Infrastructure.Logger.csproj", "{B320DA19-46F8-4C33-B7E1-292849FAB561}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altair.Infrastructure.UoW", "Altair.Infrastructure.UoW\Altair.Infrastructure.UoW.csproj", "{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Infrastructure.ApplicationLog", "Altari.Infrastructure.Logger\Onion.Infrastructure.ApplicationLog.csproj", "{B320DA19-46F8-4C33-B7E1-292849FAB561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,17 +45,9 @@ Global
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B320DA19-46F8-4C33-B7E1-292849FAB561} = {91D18F68-1D24-47A0-849F-4E97A792F111}
-		{C5973338-9FEF-4CAA-8AD8-528CDBD1C27A} = {91D18F68-1D24-47A0-849F-4E97A792F111}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95808C07-67D0-4938-8963-178532C23980}

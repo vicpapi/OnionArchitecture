@@ -1,11 +1,11 @@
-﻿using Altair.Infrastructure.Logger.Interfaces;
+﻿using Onion.Core.Interfaces.Repository;
 using Serilog;
 using System;
 using System.Configuration;
 
-namespace Altair.Infrastructure.Logger.Repository
+namespace Onion.Infrastructure.ApplicationLog
 {
-    public class SeriLogRepository : ISeriLogRepository
+    public class SeriLogRepository : ILoggingRepository
     {
         private readonly ILogger _logger = null;
 

@@ -22,5 +22,21 @@ namespace Onion.Core.BusinessRules
 
             return taxCalculate;
         }
+
+        public decimal GetTaxes(int id, IRepository<ProductDetails> productDetailRepository)
+        {
+            decimal tax = 0.06m;
+            decimal taxCalculate = 0;
+
+            var productDetail = productDetailRepository.Single(s => s.ProductId == id);
+
+            if (productDetail != null)
+            {
+                taxCalculate = (tax * productDetail.Price) + productDetail.Price;
+            }
+
+            return taxCalculate;
+
+        }
     }
 }

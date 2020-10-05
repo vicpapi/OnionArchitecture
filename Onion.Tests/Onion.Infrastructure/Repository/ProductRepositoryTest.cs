@@ -12,15 +12,15 @@ using Onion.DataAccess;
 using System.Linq.Expressions;
 using System;
 
-namespace Onion.Tests
+namespace Onion.Tests.Onion.Instrastructure.Repository
 {
-    public class Tests
+    public class ProductRepositoryTest
     {
         private IProductRepository _productService;
 
         private Mock<IProductRepository> _productRepositoryMock = new Mock<IProductRepository>();
 
-        public Tests()
+        public ProductRepositoryTest()
         {
             _productService = _productRepositoryMock.Object;
         }
