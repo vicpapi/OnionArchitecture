@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Onion.Infrastructure.Repository
 {
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : GenericEFRepository<Product>, IProductRepository
     {
         public ProductRepository(ApplicationContext context) : base(context)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Onion.Core.Interfaces.Repository
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
         Product GetProduct();        
     }
