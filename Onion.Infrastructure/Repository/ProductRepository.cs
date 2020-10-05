@@ -9,7 +9,7 @@ namespace Onion.Infrastructure.Repository
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
-        public ProductRepository(ApplicationContext contexto) : base(contexto)
+        public ProductRepository(ApplicationContext context) : base(context)
         {
         }
 
