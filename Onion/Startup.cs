@@ -27,7 +27,7 @@ namespace Onion
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericEFRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();
             

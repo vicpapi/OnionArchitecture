@@ -1,9 +1,5 @@
-﻿using Onion.Core.Interfaces.BusinessRules;
-using Onion.Core.Interfaces.Repository;
+﻿using Onion.Core.Interfaces.Repository;
 using Onion.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Onion.Core.BusinessRules
 {
@@ -11,7 +7,7 @@ namespace Onion.Core.BusinessRules
     {
         private const decimal _salesTaxPercentage = .065M;
 
-        public decimal GetTaxes(int id, IRepository<ProductDetails> productDetailRepository)
+        public decimal GetTaxes(int id, IGenericRepository<ProductDetails> productDetailRepository)
         {            
             decimal taxCalculate = 0;
 
