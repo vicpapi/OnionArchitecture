@@ -15,7 +15,7 @@ namespace Onion.Infrastructure.Repository
 
         public Product GetProduct()
         {
-            return this.context.Set<Product>().FirstOrDefault();
+            return this.contexto.Set<Product>().FirstOrDefault();
         }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Onion.DataAccess;
 
-namespace Onion.Migrations
+namespace Onion.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20201005181314_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,7 +20,7 @@ namespace Onion.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Onion.DataAccess.Product", b =>
+            modelBuilder.Entity("Onion.Core.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -33,7 +35,7 @@ namespace Onion.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Onion.DataAccess.ProductDetails", b =>
+            modelBuilder.Entity("Onion.Core.Models.ProductDetails", b =>
                 {
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -49,11 +51,11 @@ namespace Onion.Migrations
                     b.ToTable("ProductDetails");
                 });
 
-            modelBuilder.Entity("Onion.DataAccess.ProductDetails", b =>
+            modelBuilder.Entity("Onion.Core.Models.ProductDetails", b =>
                 {
-                    b.HasOne("Onion.DataAccess.Product", "Product")
+                    b.HasOne("Onion.Core.Models.Product", "Product")
                         .WithOne("ProductDetails")
-                        .HasForeignKey("Onion.DataAccess.ProductDetails", "ProductId")
+                        .HasForeignKey("Onion.Core.Models.ProductDetails", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
