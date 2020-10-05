@@ -9,7 +9,7 @@ namespace Onion.Core.BusinessRules
 {
     public class SalesTaxCalculator : ISalesTaxCalculator
     {
-        public decimal GetTaxes(int id, decimal salesTaxPercentage, IRepository<ProductDetails> productDetailRepository)
+        public decimal GetTaxes(int id, decimal salesTaxPercentage, IGenericRepository<ProductDetails> productDetailRepository)
         {
             decimal taxCalculate = 0;
 
@@ -23,7 +23,7 @@ namespace Onion.Core.BusinessRules
             return taxCalculate;
         }
 
-        public decimal GetTaxes(int id, IRepository<ProductDetails> productDetailRepository)
+        public decimal GetTaxes(int id, IGenericRepository<ProductDetails> productDetailRepository)
         {
             decimal tax = 0.06m;
             decimal taxCalculate = 0;

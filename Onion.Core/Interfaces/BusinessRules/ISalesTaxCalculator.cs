@@ -8,6 +8,6 @@ namespace Onion.Core.Interfaces.BusinessRules
 {
     public interface ISalesTaxCalculator
     {
-        decimal GetTaxes(int id, decimal salesTaxPercentage, IRepository<ProductDetails> productDetailRepository);
+        decimal GetTaxes(int id, decimal salesTaxPercentage, IGenericRepository<ProductDetails> productDetailRepository);
     }
 }

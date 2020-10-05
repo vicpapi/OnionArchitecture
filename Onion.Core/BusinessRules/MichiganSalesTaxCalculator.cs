@@ -11,7 +11,7 @@ namespace Onion.Core.BusinessRules
     {
         private const decimal _salesTaxPercentage = .065M;
 
-        public decimal GetTaxes(int id, IRepository<ProductDetails> productDetailRepository)
+        public decimal GetTaxes(int id, IGenericRepository<ProductDetails> productDetailRepository)
         {            
             decimal taxCalculate = 0;
 
