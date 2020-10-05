@@ -9,10 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Altair.Infrastructure.UoW\Altair.Infrastructure.UoW.csproj" />
-    <ProjectReference Include="..\Altari.Infrastructure.Logger\Altair.Infrastructure.Logger.csproj" />
+    <ProjectReference Include="..\Altari.Infrastructure.Logger\Onion.Infrastructure.ApplicationLog.csproj" />
     <ProjectReference Include="..\DataAccess\Onion.DataAccess.csproj" />
     <ProjectReference Include="..\Onion.Core\Onion.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ApplicationServices\" />
+    <Folder Include="UnitOfWork\" />
   </ItemGroup>
 
 </Project>

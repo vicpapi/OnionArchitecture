@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Onion.Core.Models;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Linq.Expressions;
 
 namespace Onion.Core.Interfaces.Repository
 {
-    public interface IRepository<TEntidad>
+    public interface IGenericRepository<TEntidad>
     {
         List<TEntidad> SelectAll();
 
@@ -22,6 +19,5 @@ namespace Onion.Core.Interfaces.Repository
         void Update(TEntidad source);
 
         void Delete(Expression<Func<TEntidad, bool>> expresion);
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Onion.Core.Interfaces.Repository;
 using Onion.Core.Models;
+using Onion.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,34 +8,15 @@ using System.Threading.Tasks;
 
 namespace Onion.Infrastructure.Repository
 {
-    public class ProductDetailsRepository : IProductDetailsRepository
+    public class ProductDetailsRepository : GenericEFRepository<Product>, IProductDetailsRepository
     {
-        private IRepository<ProductDetails> productDetailsRepository;
-
-        public ProductDetailsRepository(IRepository<ProductDetails> productDetailsRepository)
+        public ProductDetailsRepository(ApplicationContext context) : base(context)
         {
-            this.productDetailsRepository = productDetailsRepository;
         }
 
         public ProductDetails GetProductDetail(int id)
         {
-            return productDetailsRepository.Single(s=> s.ProductId == id);
-        }
-
-        public decimal GetTaxes(int id)
-        {
-            decimal tax = 0.06m;
-            decimal taxCalculate = 0;
-
-            var productDetail = productDetailsRepository.Single(s => s.ProductId == id);
-
-            if (productDetail != null)
-            {
-                taxCalculate = (tax * productDetail.Price) + productDetail.Price;
-            }
-
-            return taxCalculate;
-
+            return this.context.Set<ProductDetails>().Single(s=> s.ProductId == id);
         }
     }
 }

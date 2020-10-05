@@ -1,6 +1,6 @@
 ﻿namespace Onion.Core.Interfaces.Repository
 {
-    public interface ILog4NetRepository
+    public interface ILoggingRepository
     {
         void LogInfo(string message);
 

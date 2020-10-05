@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Onion.Core.Models;
 using Onion.DataAccess;
+using Onion.DataAccess.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Onion.DataAccess
 {
-    public class ApplicationContext : DbContext, IApplicationDbContext
+    public class ApplicationContext : DbContext
     {
-        public ApplicationContext() 
-        { 
+        public ApplicationContext()
+        {
         }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)

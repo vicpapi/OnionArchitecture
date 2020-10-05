@@ -1,5 +1,6 @@
 ﻿using Onion.Core.Interfaces;
 using Onion.Core.Interfaces.Repository;
+using Onion.Infrastructure.ApplicationLog;
 using Onion.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
@@ -7,16 +8,16 @@ using System.IO;
 using System.Text;
 using Xunit;
 
-namespace Onion.Tests
+namespace Onion.Tests.Onion.Infrastructure.ApplicationLog
 {
     public class Log4NetTest
     {
-        private ILog4NetRepository _loggerRepository = null;
+        private ILoggingRepository _loggerRepository = null;
         private string path = @"C:\Users\Victor Ayala\Documents\Visual Studio 2019\Projects\Document\Document.Test\bin\Debug\netcoreapp3.1\Logs\2020-09-29.txt";
 
         public Log4NetTest()
         {
-            _loggerRepository = new LogNetRepository("log4net.config", "log4net");
+            _loggerRepository = new Log4NetRepository("log4net.config", "log4net");
         }
 
         [Fact]

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Onion.DataAccess
+namespace Onion.DataAccess.Mappings
 {
     public class ProductMap
     {

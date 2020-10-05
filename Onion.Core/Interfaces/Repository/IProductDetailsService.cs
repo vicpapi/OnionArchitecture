@@ -8,8 +8,7 @@ namespace Onion.Core.Interfaces.Repository
 {
     public interface IProductDetailsRepository
     {
-        ProductDetails GetProductDetail(int id);
-        decimal GetTaxes(int id);
+        ProductDetails GetProductDetail(int id);        
 
     }
 }
