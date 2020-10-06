@@ -1,5 +1,7 @@
 ﻿using log4net;
 using log4net.Config;
+using log4net.Core;
+using log4net.Layout;
 using Onion.Core.Interfaces.Repository;
 using System;
 using System.IO;
@@ -29,7 +31,7 @@ namespace Onion.Infrastructure.ApplicationLog
                     XmlConfigurator.Configure(repo, log4netConfig[elementName]);
 
                     // The first log to be written 
-                    _logger.Info("Log System Initialized");
+                    //_logger.Info("Log System Initialized");
                 }
             }
             catch (Exception ex)

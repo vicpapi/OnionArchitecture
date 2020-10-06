@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Onion.Core.Interfaces.Repository;
 using Onion.Core.Models;
-using Onion.Helpers;
 
 namespace Onion.Controllers
 {
@@ -57,8 +50,8 @@ namespace Onion.Controllers
         {
             //try
             //{
-                var cero = 0;
-                var error = 5 / cero;
+            //var cero = 0;
+            //    var error = 5 / cero;
 
             //}
             //catch (Exception exp)
