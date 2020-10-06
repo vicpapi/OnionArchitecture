@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Onion.Core.Interfaces.Repository;
 using Onion.Core.Models;
+using Onion.Helpers;
 
 namespace Onion.Controllers
 {
@@ -18,7 +20,7 @@ namespace Onion.Controllers
 
         public ProductController(IProductRepository productRepository, ILoggingRepository loggerRepository)
         {
-            this.productRepository = productRepository; 
+            this.productRepository = productRepository;
             _loggerRepository = loggerRepository;
         }
 
@@ -26,6 +28,7 @@ namespace Onion.Controllers
         public List<ProductDetails> Get()
         {
             _loggerRepository.LogInfo("Test Get");
+
 
             var productDetails = new List<ProductDetails>();
             var productList = productRepository.SelectAll();
@@ -52,14 +55,24 @@ namespace Onion.Controllers
         // GET: Product
         public IActionResult Index()
         {
-            _loggerRepository.LogInfo("Test Index");
+            //try
+            //{
+                var cero = 0;
+                var error = 5 / cero;
+
+            //}
+            //catch (Exception exp)
+            //{
+            //    Logger.SaveErrorLog(exp);
+            //}
+
             return View(this.productRepository.SelectAll());
         }
 
         // GET: Product/Details/5
         public IActionResult Details(int id)
         {
-            var product = this.productRepository.Single(s=> s.ProductId == id);
+            var product = this.productRepository.Single(s => s.ProductId == id);
 
             if (product == null)
             {
@@ -84,7 +97,7 @@ namespace Onion.Controllers
             {
 
             }
-            this.productRepository.Create(product); 
+            this.productRepository.Create(product);
 
             return View(product);
         }
@@ -92,7 +105,7 @@ namespace Onion.Controllers
         // GET: Product/Edit/5
         public IActionResult Edit(int id)
         {
-            var product = this.productRepository.Select(s=> s.ProductId == id);
+            var product = this.productRepository.Select(s => s.ProductId == id);
             if (product == null)
             {
                 return NotFound();
