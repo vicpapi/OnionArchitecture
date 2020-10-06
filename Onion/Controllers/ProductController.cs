@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Onion.Core.Interfaces.Repository;
+using Onion.Core.Interfaces.Services;
 using Onion.Core.Models;
 using Onion.Helpers;
 
@@ -16,28 +17,25 @@ namespace Onion.Controllers
     {
         private readonly IProductRepository productRepository;
         private readonly IProductDetailsRepository productDetailsRepository;
+        private readonly IProductService _productService;
         private readonly ILoggingRepository _loggerRepository;
 
-        public ProductController(IProductRepository productRepository, ILoggingRepository loggerRepository)
+        public ProductController(
+            IProductRepository productRepository,
+            IProductService productService,
+            ILoggingRepository loggerRepository)
         {
             this.productRepository = productRepository;
+            _productService = productService;
             _loggerRepository = loggerRepository;
         }
 
         [HttpGet]
-        public List<ProductDetails> GetAllProductDetails()
+        public IEnumerable<ProductDetails> GetAllProductDetails()
         {
             _loggerRepository.LogInfo("Get product details from product controller");
 
-            var products = productRepository.SelectAll();
-
-
-            var productDetails = new List<ProductDetails>();
-
-            foreach (var product in products)
-            {
-                productDetails.Add(product.ProductDetails);
-            }
+            var productDetails = _productService.GetProductsDetails();
 
             return productDetails;
         }

@@ -9,6 +9,8 @@ using Onion.Infrastructure.Repository;
 using Onion.DataAccess;
 using Onion.Core.Interfaces.Repository;
 using Onion.Infrastructure.ApplicationLog;
+using Onion.Core.Interfaces.Services;
+using Onion.Services;
 using Onion.Helpers;
 
 namespace Onion
@@ -33,7 +35,8 @@ namespace Onion
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericEFRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();
-            
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddScoped<ILoggingRepository, Log4NetRepository>(service =>
             {
                 return new Log4NetRepository(Configuration["Log4Net:path"],

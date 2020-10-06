@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Core", "Onion.Core\On
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Infrastructure.ApplicationLog", "Altari.Infrastructure.Logger\Onion.Infrastructure.ApplicationLog.csproj", "{B320DA19-46F8-4C33-B7E1-292849FAB561}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Services", "Onion.Services\Onion.Services.csproj", "{0D1B712E-215B-4671-9810-7945EFEBBC9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B320DA19-46F8-4C33-B7E1-292849FAB561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D1B712E-215B-4671-9810-7945EFEBBC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1B712E-215B-4671-9810-7945EFEBBC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1B712E-215B-4671-9810-7945EFEBBC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1B712E-215B-4671-9810-7945EFEBBC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
