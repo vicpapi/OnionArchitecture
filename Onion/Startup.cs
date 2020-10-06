@@ -9,7 +9,9 @@ using Onion.Infrastructure.Repository;
 using Onion.DataAccess;
 using Onion.Core.Interfaces.Repository;
 using Onion.Infrastructure.ApplicationLog;
+using Onion.Core.Interfaces.Services;
 using Onion.Helpers;
+using Onion.Infrastructure.Services;
 
 namespace Onion
 {
@@ -26,12 +28,15 @@ namespace Onion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            setConfigurarionManager();
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationContext>(options =>
+                                    options
+                                        .UseLazyLoadingProxies()
+                                        .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericEFRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();
-            
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddScoped<ILoggingRepository, Log4NetRepository>(service =>
             {
                 return new Log4NetRepository(Configuration["Log4Net:path"],
