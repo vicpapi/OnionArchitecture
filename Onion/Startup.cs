@@ -26,8 +26,10 @@ namespace Onion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            setConfigurarionManager();
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationContext>(options =>
+                                    options
+                                        .UseLazyLoadingProxies()
+                                        .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericEFRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();

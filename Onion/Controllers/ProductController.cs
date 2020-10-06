@@ -25,26 +25,18 @@ namespace Onion.Controllers
         }
 
         [HttpGet]
-        public List<ProductDetails> Get()
+        public List<ProductDetails> GetAllProductDetails()
         {
-            _loggerRepository.LogInfo("Test Get");
+            _loggerRepository.LogInfo("Get product details from product controller");
+
+            var products = productRepository.SelectAll();
 
 
             var productDetails = new List<ProductDetails>();
-            var productList = productRepository.SelectAll();
 
-            foreach (var product in productList)
+            foreach (var product in products)
             {
-                var productDetailList = productDetailsRepository.GetProductDetail(product.ProductId);
-
-                ProductDetails details = new ProductDetails
-                {
-                    ProductId = product.ProductId,
-                    Price = productDetailList.Price,
-                    StockAvailable = productDetailList.StockAvailable,
-                };
-
-                productDetails.Add(details);
+                productDetails.Add(product.ProductDetails);
             }
 
             return productDetails;
