@@ -10,8 +10,8 @@ using Onion.DataAccess;
 using Onion.Core.Interfaces.Repository;
 using Onion.Infrastructure.ApplicationLog;
 using Onion.Core.Interfaces.Services;
-using Onion.Services;
 using Onion.Helpers;
+using Onion.Infrastructure.Services;
 
 namespace Onion
 {

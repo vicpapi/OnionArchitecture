@@ -13,33 +13,48 @@ namespace Onion.Tests.Onion.Infrastructure.ApplicationLog
     public class Log4NetTest
     {
         private ILoggingRepository _loggerRepository = null;
-        private string path = @"C:\Users\Victor Ayala\Documents\Visual Studio 2019\Projects\Document\Document.Test\bin\Debug\netcoreapp3.1\Logs\2020-09-29.txt";
+        private string _logFilePath = string.Empty;        
 
         public Log4NetTest()
         {
             _loggerRepository = new Log4NetRepository("log4net.config", "log4net");
+            _logFilePath = GenerateLogFilePath();
         }
 
         [Fact]
         public void SaveInfo()
         {
-            string message = "Test logger1";
-            bool exists = false;       
+            //Arrange
+            string message = "Test logger1";                 
 
+            //Act
             _loggerRepository.LogInfo(message);
+           
+            var logText = File.ReadAllText(_logFilePath);
 
-            var logText = File.ReadAllText(path);
-
-            if (logText.Contains(message))
-            {
-                exists = true;
-            }
-
-            Assert.True(exists);
+            //Assert
+            Assert.True(logText.Contains(message) == true);
         }
 
 
+        private string GenerateLogFilePath(string currentDirectory = "", DateTime? logDate = null)
+        {
+            var returnValue = new StringBuilder();
 
+            if(String.IsNullOrEmpty(currentDirectory))
+            {
+                currentDirectory = Directory.GetCurrentDirectory();
+            }
+            
+            if(logDate == null)
+            {
+                logDate = DateTime.Now;
+            }
+            
+            returnValue.Append(String.Format(@"{0}\Logs\{1}.txt", currentDirectory, logDate.Value.ToString("yyyy-MM-dd")));
+
+            return returnValue.ToString();
+        }
 
     }
 }
