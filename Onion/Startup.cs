@@ -11,6 +11,7 @@ using Onion.Core.Interfaces.Repository;
 using Onion.Infrastructure.ApplicationLog;
 using Onion.Core.Interfaces.Services;
 using Onion.Services;
+using Onion.Helpers;
 
 namespace Onion
 {
@@ -27,7 +28,6 @@ namespace Onion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             services.AddDbContext<ApplicationContext>(options =>
                                     options
                                         .UseLazyLoadingProxies()
@@ -49,7 +49,8 @@ namespace Onion
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -68,8 +69,14 @@ namespace Onion
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
             });
+        }
+
+        private void setConfigurarionManager()
+        {
+            ConfigurationManager.LOG4NET_PATH = Configuration["Log4Net:path"];
+            ConfigurationManager.LOG4NET_ELEMENTNAME = Configuration["Log4Net:elementName"];
         }
     }
 }

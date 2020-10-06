@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion", "Onion\Onion.csproj", "{32684AE0-CA26-4524-824B-4A904CF6B0D3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.DataAccess", "DataAccess\Onion.DataAccess.csproj", "{BE860070-E49D-4AF1-9A1E-488EED76E9F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Infrastructure.DataAccess", "DataAccess\Onion.Infrastructure.DataAccess.csproj", "{BE860070-E49D-4AF1-9A1E-488EED76E9F2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Tests", "Onion.Tests\Onion.Tests.csproj", "{99857818-F7B9-4430-8252-88F7D0300798}"
 EndProject
