@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Onion.Infrastructure.Repository
 {
-    public class ProductDetailsRepository : GenericEFRepository<Product>, IProductDetailsRepository
+    public class ProductDetailsRepository : GenericEFRepository<ProductDetails>, IProductDetailsRepository
     {
         public ProductDetailsRepository(ApplicationContext context) : base(context)
         {

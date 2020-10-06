@@ -13,7 +13,6 @@ namespace Onion.DataAccess.Mappings
         {
 
             entityBuilder.HasKey(p => p.ProductId);
-            entityBuilder.HasOne(p => p.ProductDetails).WithOne(p => p.Product).HasForeignKey<ProductDetails>(x => x.ProductId);
         }
 
     }
