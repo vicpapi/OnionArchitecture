@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Onion.Core.Interfaces.Services;
+using Onion.Core.Models;
 using Onion.Models;
 
 namespace Onion.Controllers
 {
     public class LoggerController : Controller
     {
-        public IActionResult Index(string id)
+        private readonly ILoggerService _loggerService;
+
+        public LoggerController(ILoggerService loggerService)
         {
-            var xml = "<log>" + System.IO.File.ReadAllText(@"C:\Users\Victor Ayala\source\repos\OnionArchitecture\OnionArchitecture\Onion\bin\Debug\netcoreapp3.1\Logs\2020-10-06.xml") + "</log>";
+            _loggerService = loggerService;
+        }
 
-            ErrorViewModel model = new ErrorViewModel();
-            XDocument xDoc = XDocument.Parse(xml);
+        public IActionResult Index(string id)
+        { 
+            Error model = new Error(); 
 
-            model = (from rsElement in xDoc.Descendants("LogEntry")
-                     from accItem in rsElement.Descendants("Message")
-                     where accItem.FirstAttribute.Value == id
-                     select new ErrorViewModel
-                     {
-                         Message = accItem.Value
-                     }).FirstOrDefault();
+            model = _loggerService.GetError(id);
 
             return View(model);
         }
