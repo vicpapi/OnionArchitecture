@@ -37,6 +37,7 @@ namespace Onion
             //services.AddTransient<IProductDetailsRepository, ProductDetailsRepository>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ILoggerService, LoggerService>();
+            services.AddScoped<CustomAttributes.LogAttribute>();
 
             services.AddScoped<ILoggingRepository, Log4NetRepository>(service =>
             {

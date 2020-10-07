@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Onion.Core.BusinessRules;
 using Onion.Core.Interfaces.Repository;
 using Onion.Core.Interfaces.Services;
 using Onion.Core.Models;
+using Onion.CustomAttributes;
 
 namespace Onion.Controllers
 {
@@ -10,24 +12,20 @@ namespace Onion.Controllers
     {
         private readonly IProductRepository productRepository;
         private readonly IProductDetailsRepository productDetailsRepository;
-        private readonly IProductService _productService;
-        private readonly ILoggingRepository _loggerRepository;
+        private readonly IProductService _productService; 
 
         public ProductController(
             IProductRepository productRepository,
-            IProductService productService,
-            ILoggingRepository loggerRepository)
+            IProductService productService)
         {
             this.productRepository = productRepository;
-            _productService = productService;
-            _loggerRepository = loggerRepository;
+            _productService = productService; 
         }
 
         [HttpGet]
+        [Log(LogEnum.Info, "Get product details from product controller")]
         public IEnumerable<ProductDetails> GetAllProductDetails()
         {
-            _loggerRepository.LogInfo("Get product details from product controller");
-
             var productDetails = _productService.GetProductsDetails();
 
             return productDetails;
@@ -36,20 +34,12 @@ namespace Onion.Controllers
 
 
         // GET: Product
+        [Log(LogEnum.Info, "Index Text")]
         public IActionResult Index()
         {
-            //try
-            //{
-            //var cero = 0;
-            //    var error = 5 / cero;
+            var products = this.productRepository.SelectAll();
 
-            //}
-            //catch (Exception exp)
-            //{
-            //    Logger.SaveErrorLog(exp);
-            //}
-
-            return View(this.productRepository.SelectAll());
+            return View(products);
         }
 
         // GET: Product/Details/5
@@ -66,9 +56,9 @@ namespace Onion.Controllers
         }
 
         // GET: Product/Create
+        [Log(LogEnum.Info, "Create Product")]
         public IActionResult Create()
         {
-            _loggerRepository.LogInfo("Test Get");
             return View();
         }
 
