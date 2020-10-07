@@ -1,12 +1,10 @@
-﻿using Onion.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Onion.Core.Models;
 
 namespace Onion.Core.Interfaces.Services
 {
     public interface ILoggerService
     {
-        Error GetError(string id);
+        LogInfo GetInfoById(string fileName, string id);
     }
 }

@@ -1,31 +1,38 @@
 ﻿using Onion.Core.Interfaces.Services;
 using Onion.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Onion.Infrastructure.Services
 {
     public  class LoggerService : ILoggerService
     {
-        public Error GetError(string id)
+        public LogInfo GetInfoById(string fileName, string id)
         {
-            //2020-10-06
+            var path = new Uri(System.Reflection.Assembly
+                                .GetExecutingAssembly()
+                                .GetName()
+                                .CodeBase)
+                        .LocalPath;
 
-            var xml = "<log>" + System.IO.File.ReadAllText(@$"C:\Users\Victor Ayala\source\repos\OnionArchitecture\OnionArchitecture\Onion\bin\Debug\netcoreapp3.1\Logs\{DateTime.Now.ToString("yyyy-MM-dd")}.xml") + "</log>";
+            path = System.IO.Path.GetDirectoryName(path);
 
-            Error model = new Error();
-            XDocument xDoc = XDocument.Parse(xml);
+            var relativePath = System.IO.File.ReadAllText(
+                                System.IO.Path.Combine(Environment.CurrentDirectory,
+                                    path + "/Logs/" + fileName));
 
-            model = (from rsElement in xDoc.Descendants("LogEntry")
-                     from accItem in rsElement.Descendants("Message")
-                     where accItem.FirstAttribute.Value == id
-                     select new Error
-                     {
-                         Message = accItem.Value
-                     }).FirstOrDefault();
+            var xml = "<log>" + relativePath + "</log>";
+
+            var xDoc = XDocument.Parse(xml);
+
+            var model = (from rsElement in xDoc.Descendants("LogEntry")
+                            from accItem in rsElement.Descendants("Message")
+                            where accItem.FirstAttribute.Value == id.ToString()
+                        select new LogInfo
+                        {
+                            Message = accItem.Value
+                        }).FirstOrDefault();
 
             return model;
         }
