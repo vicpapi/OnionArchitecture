@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Onion.Core.Interfaces.Services;
-using Onion.Core.Models;
-using Onion.Models;
 
 namespace Onion.Controllers
 {
@@ -14,11 +13,9 @@ namespace Onion.Controllers
             _loggerService = loggerService;
         }
 
-        public IActionResult Index(string id)
+        public IActionResult Index(string fileName, string id)
         { 
-            Error model = new Error(); 
-
-            model = _loggerService.GetError(id);
+            var model = _loggerService.GetInfoById(fileName, id);
 
             return View(model);
         }

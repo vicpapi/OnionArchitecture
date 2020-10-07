@@ -38,17 +38,6 @@ namespace Onion.Controllers
         // GET: Product
         public IActionResult Index()
         {
-            //try
-            //{
-            //var cero = 0;
-            //    var error = 5 / cero;
-
-            //}
-            //catch (Exception exp)
-            //{
-            //    Logger.SaveErrorLog(exp);
-            //}
-
             return View(this.productRepository.SelectAll());
         }
 
